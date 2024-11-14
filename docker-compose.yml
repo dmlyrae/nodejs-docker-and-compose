@@ -1,0 +1,46 @@
+version: '1'
+
+services: 
+  database: 
+    container_name: 'database'
+    image: postgres:alpine
+    env_file: .env
+    restart: always
+    volumes: 
+      - pg_data:/data/postgres
+    networks:
+      - internal  
+
+  backend: 
+    container_name: 'kpd_backend'
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: backend-compose-kpd
+    env_file: .env
+    restart: always
+    ports: 
+     - '4000:3000'
+    depends_on: 
+      - database
+    networks:
+      - internal
+
+  frontend:
+    container_name: 'kpd_frontend'
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: frontend-compose-kpd
+    ports:
+      - '8081:80'
+    restart: always
+    networks:
+      - external
+
+volumes:
+  pg_data:
+
+networks: 
+  internal:
+  external:
