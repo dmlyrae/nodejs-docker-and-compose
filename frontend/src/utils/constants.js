@@ -1,4 +1,4 @@
-export const URL = "/api";
+export const URL = "https://api.dmlyrae2.nomorepartiesco.ru";
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;

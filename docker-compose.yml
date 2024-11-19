@@ -12,11 +12,11 @@ services:
       - internal  
 
   backend: 
-    container_name: 'kpd_backend'
+    container_name: 'backend'
     build:
       context: backend
       dockerfile: Dockerfile
-    image: backend-compose-kpd
+    image: backend-image
     env_file: .env
     restart: always
     ports: 
@@ -27,11 +27,11 @@ services:
       - internal
 
   frontend:
-    container_name: 'kpd_frontend'
+    container_name: 'frontend'
     build:
       context: frontend
       dockerfile: Dockerfile
-    image: frontend-compose-kpd
+    image: frontend-image
     ports:
       - '8081:80'
     restart: always
