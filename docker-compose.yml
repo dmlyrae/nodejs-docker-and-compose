@@ -1,8 +1,8 @@
-version: '1'
+version: '3'
 
 services: 
-  database: 
-    container_name: 'database'
+  db: 
+    container_name: 'db'
     image: postgres:alpine
     env_file: .env
     restart: always
@@ -22,7 +22,7 @@ services:
     ports: 
      - '4000:3000'
     depends_on: 
-      - database
+      - db
     networks:
       - internal
 
