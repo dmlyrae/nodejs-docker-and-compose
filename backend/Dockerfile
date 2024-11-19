@@ -10,7 +10,6 @@ COPY . .
 
 RUN npm run build
 
-
 FROM node:18-alpine as runner
 
 WORKDIR /app
